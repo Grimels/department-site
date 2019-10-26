@@ -1,0 +1,10 @@
+.list-item {
+  margin: 10px 0;
+  text-align: left;
+
+  &:before {
+    content: '•';
+    margin-right: 15px;
+    color: #163269;
+  }
+}

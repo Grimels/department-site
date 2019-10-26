@@ -1,0 +1,98 @@
+$active-color: #3db166;
+$text-color: #163269;
+
+$outline-color: #e6e6e6;
+
+$font-size: 17px;
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+  'Droid Sans', 'Helvetica Neue', sans-serif;
+
+.navbar {
+  z-index: 100;
+  height: 75px;
+  background-color: #fff;
+  padding: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: $text-color;
+
+  box-shadow: 1px 1px 1px $outline-color;
+
+  .nav-item {
+    height: 100%;
+    font-family: $font-family;
+    cursor: pointer;
+    text-decoration: none;
+    color: $text-color;
+
+    margin-bottom: -10px;
+
+    &:hover {
+      color: $active-color;
+      transition-duration: 1s;
+    }
+
+    &:visited {
+      color: none;
+    }
+
+    &.current {
+      color: $active-color;
+      border-bottom: 4px solid;
+      transition-duration: 0s;
+    }
+  }
+
+  .logo {
+    .logo-department-text {
+      font-size: $font-size;
+      font-family: $font-family;
+    }
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    text-decoration: none;
+    color: $text-color;
+
+    img {
+      background-color: $text-color;
+      border-radius: 100%;
+      padding: 1px;
+
+      margin-right: 25px;
+    }
+  }
+
+  .nav-items {
+    margin-top: 5px;
+
+    display: flex;
+
+    .nav-item {
+      margin: 0 5px;
+      font-size: $font-size;
+    }
+  }
+
+  &.sticky {
+    position: sticky;
+    top: 0;
+  }
+
+  @media screen and (max-width: 800px) {
+    .nav-items {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .nav-item {
+      margin: 0 10px;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.footer {
+  font-family: 'Freight Text Medium';
+  bottom: 0;
+  width: 100%;
+
+  background-color: #363636;
+  color: #ababab;
+
+  display: flex;
+  justify-content: space-between;
+
+  line-height: 1.7;
+
+  .address,
+  .contacs {
+    padding: 5px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

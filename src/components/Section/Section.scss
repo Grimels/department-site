@@ -1,0 +1,52 @@
+.horizontal-header {
+  margin: 0;
+
+  .header {
+    font-size: 29px;
+    font-weight: 700;
+    letter-spacing: 0px;
+    text-transform: none;
+    margin-top: 5px;
+    text-transform: none;
+  }
+
+  .header-underline {
+    text-align: center;
+    border-bottom: 4px solid #3db166;
+  }
+}
+
+.section {
+  display: flex;
+
+  padding-top: 40px;
+  margin: 0 25px;
+
+  font-family: 'Freight Text Medium';
+
+  .horizontal-header {
+    min-width: 250px;
+    max-width: 250px;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    $font-size: 16px;
+    margin-top: -5px;
+
+    * {
+      text-align: justify;
+      text-indent: 2em;
+      margin: 20px;
+
+      line-height: 1.7;
+      margin-top: 0px;
+      margin-bottom: 20px;
+      font-size: $font-size;
+      color: #6b6b6b;
+    }
+  }
+}

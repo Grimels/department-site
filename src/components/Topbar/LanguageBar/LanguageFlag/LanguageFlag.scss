@@ -1,0 +1,23 @@
+.language-flag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 5px;
+  padding-right: 2px;
+
+  span {
+    color: #fff;
+    font-size: 12px;
+  }
+
+  img {
+    width: 25px;
+  }
+
+  cursor: pointer;
+
+  &.selected {
+    border-bottom: 1px solid #fff;
+  }
+}

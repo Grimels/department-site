@@ -1,0 +1,49 @@
+.feedbacks {
+  height: 75vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .feedback {
+    height: 40vh;
+    width: 50vw;
+
+    display: flex;
+    justify-content: space-between;
+
+    .text-block > * {
+      font-family: 'Freight Text Medium';
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .author-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 100%;
+
+      margin: 5% 30px 0 0;
+    }
+
+    .quote {
+      text-align: justify;
+      color: hsl(0, 0, 20%);
+
+      hyphens: auto;
+
+      &::before {
+        content: url('../../../styles/assets/icons/backqoute.png');
+        float: left;
+        margin-right: 10px;
+      }
+    }
+
+    .author {
+      color: hsl(0, 0, 40%);
+      &::before {
+        content: '\2014 \00A0';
+      }
+    }
+  }
+}
