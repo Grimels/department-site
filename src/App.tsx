@@ -30,9 +30,9 @@ const App: React.FC = () => {
     const sticky = navbarRef.current.offsetTop;
 
     if (window.pageYOffset >= sticky) {
-      navbarRef.current.classList.add("sticky")
+      navbarRef.current.classList.add("top-sticky")
     } else {
-      navbarRef.current.classList.remove("sticky");
+      navbarRef.current.classList.remove("top-sticky");
     }
   };
 

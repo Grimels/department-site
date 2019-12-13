@@ -3,13 +3,18 @@ $text-color: #163269;
 
 $outline-color: #e6e6e6;
 
+$navbar-height: 75px;
+
 $font-size: 17px;
 $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
   'Droid Sans', 'Helvetica Neue', sans-serif;
 
+.navbar-nav {
+  align-items: center;
+  white-space: nowrap;
+}
+
 .navbar {
-  z-index: 100;
-  height: 75px;
   background-color: #fff;
   padding: 0;
 
@@ -27,8 +32,6 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     cursor: pointer;
     text-decoration: none;
     color: $text-color;
-
-    margin-bottom: -10px;
 
     &:hover {
       color: $active-color;
@@ -49,7 +52,8 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   .logo {
     .logo-department-text {
       font-size: $font-size;
-      font-family: $font-family;
+      font-family: 'Freight Text Medium';
+      font-weight: 600;
     }
 
     display: flex;
@@ -68,31 +72,28 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     }
   }
 
-  .nav-items {
-    margin-top: 5px;
+  .nav-item {
+    margin: 0 5px;
+    font-size: $font-size;
+    height: $navbar-height;
 
-    display: flex;
+    * {
+      margin-bottom: 0;
+      margin-top: calc(#{$navbar-height} / 3);
 
-    .nav-item {
-      margin: 0 5px;
-      font-size: $font-size;
+      word-wrap: break-word;
     }
   }
+}
 
-  &.sticky {
-    position: sticky;
-    top: 0;
-  }
+@media screen and (min-width: 800px) {
+  .navbar {
+    height: $navbar-height;
 
-  @media screen and (max-width: 800px) {
-    .nav-items {
-      display: none;
-    }
-  }
-
-  @media screen and (min-width: 1200px) {
-    .nav-item {
-      margin: 0 10px;
+    .logo {
+      .logo-department-text {
+        font-size: $font-size + 4px;
+      }
     }
   }
 }

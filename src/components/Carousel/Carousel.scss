@@ -3,19 +3,17 @@
 }
 
 .carousel-control-prev {
-  height: 25vh;
   margin-left: -20%;
-  margin-top: 5%;
 }
 
 .carousel-control-next {
   margin-right: -20%;
-  height: 25vh;
-  margin-top: 5%;
 }
 
 .carousel-control-prev,
 .carousel-control-next {
+  height: inherit;
+
   .carousel-control-prev-icon {
     background-image: url('../../styles/assets/icons/left-arrow.png');
     width: 23px;

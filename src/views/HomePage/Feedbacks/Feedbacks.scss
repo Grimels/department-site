@@ -1,16 +1,17 @@
 .feedbacks {
-  height: 75vh;
+  height: 50vh;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
   .feedback {
-    height: 40vh;
+    height: 50vh;
     width: 50vw;
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     .text-block > * {
       font-family: 'Freight Text Medium';
@@ -23,7 +24,7 @@
       height: 150px;
       border-radius: 100%;
 
-      margin: 5% 30px 0 0;
+      margin: -10px 5% 0 0;
     }
 
     .quote {

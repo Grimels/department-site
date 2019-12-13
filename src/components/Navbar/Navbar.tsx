@@ -1,6 +1,7 @@
-import React, { RefObject, useEffect } from 'react';
+import React, { RefObject } from 'react';
 
 import { NavLink, withRouter, RouteComponentProps } from 'react-router-dom';
+import { Navbar as BootstrapNavbar, NavbarToggler, Collapse, Nav } from 'reactstrap';
 
 import { useLanguage } from 'hooks/useLanguage';
 import { getPathLinks } from 'utils/getPathLinks';
@@ -20,6 +21,9 @@ const NavbarView: React.FC<RouteComponentProps & INavbarView> = (props) => {
   const { location: { pathname }, reference, logoIcon } = props;
   const { language } = useLanguage();
 
+  const [isToggled, setIsToggled] = React.useState(false);
+  const toggle = () => setIsToggled(!isToggled);
+
   const isActiveLabel = (path: string) => path === pathname;
 
   React.useEffect(() => {
@@ -37,16 +41,21 @@ const NavbarView: React.FC<RouteComponentProps & INavbarView> = (props) => {
   ));
 
   return (
-    <div className="navbar" ref={reference}>
-      <NavLink to='/' className="logo">
-        <img src={logoIcon} alt="" />
-        <span className="logo-department-text">{DEPARTMENT_NAME[language]}</span>
-      </NavLink>
+    <div ref={reference}>
+      <BootstrapNavbar color="light" light expand="md">
+        <NavLink to='/' className="logo">
+          <img src={logoIcon} alt="" />
+          <span className="logo-department-text">{DEPARTMENT_NAME[language]}</span>
+        </NavLink>
 
-      <div className="nav-items">
-        {renderNavigation()}
-      </div>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isToggled} navbar className="mr-2">
+          <Nav className="ml-sm-auto" navbar>
+            {renderNavigation()}
+          </Nav>
+        </Collapse>
 
+      </BootstrapNavbar>
     </div>
   );
 }
