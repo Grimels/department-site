@@ -46,7 +46,7 @@ export const LoginPage: React.FC<LoginPageProps> = () => {
 	return (
 		<StyledLoginContainer>
 			<Card>
-				<CardHeader>
+				<CardHeader styles={{ textAlign: 'center' }}>
 					<h3>Вход</h3>
 				</CardHeader>
 
