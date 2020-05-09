@@ -24,7 +24,7 @@ const ImageTitle = styled.p`
 
 		position: absolute;
 		width: ${SECTION_PADDING_TOP};
-		margin-top: -280px;
+		margin-top: -260px;
 		z-index: 1;
 
 		text-align: right;

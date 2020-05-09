@@ -15,6 +15,8 @@ const INVALID_EMAIL = {
 	[ENG]: 'Invalid email address.',
 };
 
+export const emailValidator = (email: string) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email);
+
 export const validateSubscribeFormValues = (values: ISubscribeFormValues, language: Language) => {
 	const { name, surName, email, question } = values;
 	const errors: ISubscribeFormValues = {};
@@ -33,7 +35,7 @@ export const validateSubscribeFormValues = (values: ISubscribeFormValues, langua
 
 	if (!email) {
 		errors.email = REQUIRED[language];
-	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
+	} else if (!emailValidator(email)) {
 		errors.email = INVALID_EMAIL[language];
 	}
 
@@ -50,7 +52,7 @@ export const validateLoginForm = (values: ILoginForm) => {
 
 	if (!email) {
 		errors.email = REQUIRED[RU];
-	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
+	} else if (!emailValidator(email)) {
 		errors.email = INVALID_EMAIL[RU];
 	}
 

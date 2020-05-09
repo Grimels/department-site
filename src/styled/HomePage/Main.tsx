@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { FlexContainer } from 'styled/FlexContainer';
 import { WHITE_COLOR, MAIN_COLOR } from 'styled/constants';
 
-import MainBG from 'assets/images/screen_1.png';
+import MainBG from 'assets/images/screen_1.jpg';
 
 const MainTextStyle = styled.h1`
 	flex-direction: row;
@@ -61,19 +61,21 @@ const DescriptionTextStyle = styled.h3`
 	color: ${WHITE_COLOR};
 `;
 
-const BackgroundComponent: React.FC<{ bg: string; isBgAttached?: boolean }> = ({
+const BackgroundComponent: React.FC<{ bg: string; isBgAttached?: boolean; height?: string }> = ({
 	bg,
+	height = '100%',
 	isBgAttached = false,
 	...props
 }) => (
 	<section
-		style={{
-			backgroundImage: `url(${bg})`,
-			width: '100%',
-			backgroundAttachment: isBgAttached ? 'fixed' : 'initial',
-		}}
+	style={{
+		height,
+		backgroundImage: `url(${bg})`,
+		width: '100%',
+		backgroundAttachment: isBgAttached ? 'fixed' : 'initial',
+	}}
 		{...props}
-	></section>
+	/>
 );
 
 const Background = styled(BackgroundComponent)`
@@ -95,7 +97,7 @@ const Block: React.SFC<React.CSSProperties> = ({ children, ...props }) => (
 );
 
 const MainBackground: React.SFC = ({ children }) => (
-	<Background bg={MainBG}>
+	<Background bg={MainBG} height='90vh'>
 		<Section>{children}</Section>
 	</Background>
 );

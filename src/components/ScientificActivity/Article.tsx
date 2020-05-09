@@ -7,6 +7,7 @@ import DocumentImage from 'assets/icons/contract.png';
 import { Language } from 'constants/language';
 
 export interface IArticle {
+    user_id?: number,
     id: string,
     subject: string,
     text: string,

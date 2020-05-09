@@ -22,19 +22,27 @@ import { IUser } from 'store/LoginStore';
 import NewsImg from 'assets/icons/news.png';
 import ArticleImg from 'assets/icons/article.png';
 import LogoutImg from 'assets/icons/logout.png';
+import UserImg from 'assets/icons/user.png';
 import { postsDataService } from 'dataServices/PostsDataService';
 
 import { StoreState } from 'store';
-import { setArticles, setNews } from 'store/PostsStore';
+import { setArticles, setNews, setUsers } from 'store/PostsStore';
 import { raiseError } from 'store/ErrorStore';
+import { userDataService } from 'dataServices/UserDataService';
+import { CreateUser } from 'components/Admin/Users/CreateUser';
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import { Users } from 'components/Admin/Users/Users';
 
 const LogoutIcon = renderIcon(LogoutImg);
 
 const tabs: { icon: string; name: string; path: string }[] = [
-    { icon: NewsImg, name: 'Мои Новости', path: '/admin/news' },
-    { icon: ArticleImg, name: 'Мои Статьи', path: '/admin/articles' },
+    { icon: NewsImg, name: 'Новости', path: '/admin/news' },
+    { icon: ArticleImg, name: 'Статьи', path: '/admin/articles' },
     { icon: NewsImg, name: 'Создать Новость', path: '/admin/create/news' },
     { icon: NewsImg, name: 'Создать Статью', path: '/admin/create/articles' },
+
+    { icon: UserImg, name: 'Пользователи', path: '/admin/users' },
+    { icon: UserImg, name: 'Создать Пользователя', path: '/admin/create/users' },
 ];
 
 export const Admin: React.FC<RouteComponentProps & { userData?: IUser, logout: () => void }> = withLogin(props => {
@@ -44,8 +52,10 @@ export const Admin: React.FC<RouteComponentProps & { userData?: IUser, logout: (
         location: { pathname },
     } = props;
 
+    const [infoMessage, setInfoMessage] = React.useState();
+
     const dispatch = useDispatch();
-    const { articles, news } = useSelector((state: StoreState) => state.postsReducer);
+    const { articles, news, users } = useSelector((state: StoreState) => state.postsReducer);
     React.useEffect(() => {
         if (!articles) {
             postsDataService.getArticles()
@@ -61,6 +71,14 @@ export const Admin: React.FC<RouteComponentProps & { userData?: IUser, logout: (
                 .catch(error => dispatch(raiseError(error.message)));
         }
     }, [ news ]);
+
+    React.useEffect(() => {
+        if (!users) {
+            userDataService.getUsers()
+                .then(returnedUsers => dispatch(setUsers(returnedUsers)))
+                .catch(error => dispatch(raiseError(error.message)));
+        }
+    }, [ users ]);
 
     const isActiveSideBarItem = (path: string) => path === pathname;
     document.title = 'Администратор';
@@ -103,21 +121,33 @@ export const Admin: React.FC<RouteComponentProps & { userData?: IUser, logout: (
                 </SideBarItemExit>
             </SideBar>
             <Switch>
-                <Route path='/admin/create/news' exact component={CreateNewsArticle}/>
-                <Route path='/admin/create/articles' exact component={CreateScientificArticleLink}/>
+                <Route path='/admin/create/news' exact component={() => <CreateNewsArticle setInfoMessage={setInfoMessage} />}/>
+                <Route path='/admin/create/articles' exact component={() => <CreateScientificArticleLink setInfoMessage={setInfoMessage} />}/>
+                {/*userData.isAdmin && <Route path='/admin/users' exact component={() => <Users userData={userData} createItemPath='/users' users={users} />} />*/}
+                {userData.isAdmin && <Route path='/admin/create/users' exact component={() => <CreateUser setInfoMessage={setInfoMessage}/>}/>}
 
                 <Route
                     path='/admin/articles'
                     exact
                     component={() => (
-                        <ScientificArticles createItemPath='/articles' articles={articles}>
+                        <ScientificArticles setInfoMessage={setInfoMessage} userData={userData} createItemPath='/articles' articles={articles}>
                             {(article: {}) => <ScientificArticle {...(article as IArticle)} />}
                         </ScientificArticles>
                     )}
                 />
-                <Route component={() => <News createItemPath='' news={news} />} />
+                <Route component={() => <News userData={userData} createItemPath='/news' news={news}  setInfoMessage={setInfoMessage}/>} />
             </Switch>
-
+            <Modal isOpen={infoMessage} dark>
+                <ModalHeader toggle={() => setInfoMessage(undefined)}>Уведомление</ModalHeader>
+                <ModalBody>
+                    {infoMessage}
+                </ModalBody>
+                <ModalFooter>
+                    <Button color='link' onClick={() => setInfoMessage(undefined)}>
+                        OK
+                    </Button>
+                </ModalFooter>
+            </Modal>
         </AdminContainer>
     );
 });

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { AboutContainer } from './HomePage/About';
 
 export const DefaultPage = styled.div`
+	max-width: 100vw;
 	display: flex;
 	flex-direction: column;
 
@@ -33,6 +34,35 @@ export const DefaultPageContainer = styled(AboutContainer)`
 		}
 		.text {
 			margin-left: 4em;
+			text-indent: 2em;
+
+			text-align: justify;
+
+			width: initial;
+		}
+	}
+`;
+
+export const DefaultPageContainerWithoutImage = styled(AboutContainer)`
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	padding: 0;
+
+	.text {
+		text-align: justify;
+	}
+
+	.header {
+		text-align: center;
+	}
+
+	@media only screen and (min-width: 810px) {
+		.header {
+			text-align: justify;
+		}
+		.text {
+			margin-left: 0;
 			text-indent: 2em;
 
 			text-align: justify;

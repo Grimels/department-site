@@ -8,9 +8,8 @@ import { EditArticleProps } from 'components/Admin/Articles/EditScientificActivi
 import { postsDataService } from 'dataServices/PostsDataService';
 import { setNews } from 'store/PostsStore';
 import { useDispatch } from 'react-redux';
-import { raiseError } from 'store/ErrorStore';
 
-export const EditNewsArticle: React.FC<EditArticleProps> = ({ isOpen = true, article, onSave, toggle }) => {
+export const EditNewsArticle: React.FC<EditArticleProps> = ({ setInfoMessage, isOpen = true, article, onSave, toggle }) => {
     const [ subject, setSubject ] = React.useState(article.subject);
     const [ text, setText ] = React.useState(article.text);
 
@@ -18,7 +17,7 @@ export const EditNewsArticle: React.FC<EditArticleProps> = ({ isOpen = true, art
 
     const saveArticle = () => {
         onSave({...article, subject, text })
-            .catch(err => dispatch(raiseError(err)))
+            .catch(err => setInfoMessage(err.message))
             .finally(() => postsDataService.getNews()
                 .then(returned => dispatch(setNews(returned))));
         toggle();

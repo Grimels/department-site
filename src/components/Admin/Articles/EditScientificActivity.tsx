@@ -7,16 +7,16 @@ import { Input } from 'styled/Input';
 import { useDispatch } from 'react-redux';
 import { postsDataService } from 'dataServices/PostsDataService';
 import { setArticles } from 'store/PostsStore';
-import { raiseError } from 'store/ErrorStore';
 
 export interface EditArticleProps {
     article: IArticle;
     onSave: (article: IArticle) => Promise<IArticle>;
     toggle: () => void;
     isOpen?: boolean;
+    setInfoMessage: (msg: string) => void;
 }
 
-export const EditScientificActivity: React.FC<EditArticleProps> = ({ isOpen = true, article, onSave, toggle }) => {
+export const EditScientificActivity: React.FC<EditArticleProps> = ({ setInfoMessage, isOpen = true, article, onSave, toggle }) => {
     const [ subject, setSubject ] = React.useState(article.subject);
     const [ text, setText ] = React.useState(article.text);
 
@@ -58,7 +58,7 @@ export const EditScientificActivity: React.FC<EditArticleProps> = ({ isOpen = tr
                     color='primary'
                     onClick={() => {
                         article && onSave({ ...article, subject, text })
-                            .catch(error => dispatch(raiseError(error.message)))
+                            .catch(error => setInfoMessage(error.message))
                             .finally(() => postsDataService.getArticles()
                             .then(returned => dispatch(setArticles(returned))));
                         toggle();

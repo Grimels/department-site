@@ -47,8 +47,8 @@ const Partners = () => (
 const Hr = styled.hr`
 	margin-top: 12px !important;
 `;
-const Header: React.FC = ({ children }) => (
-	<HeaderContainer>
+const Header: React.FC<{className?: string}> = ({ className, children }) => (
+	<HeaderContainer className={className}>
 		<HeaderText>{children}</HeaderText>
 		<Hr />
 	</HeaderContainer>

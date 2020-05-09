@@ -11,10 +11,12 @@ import { HomePage } from 'components/HomePage';
 import { AboutDepartment } from 'components/AboutDepartment';
 import { Applicants } from 'components/Applicants';
 import { Student } from 'components/Student';
-import { ScientificActivity } from 'components/ScientificActivity';
+import { Events, ScientificActivity, ScientificDevelopments } from 'components/ScientificActivity';
 import { Footer } from 'components/Footer';
 import { News } from 'components/News';
 import { NewsItem } from 'components/News/NewsItem';
+import { MethodicalSupport } from 'components/Student/MethodicalSupport';
+import { Masters } from 'components/Applicants/Masters';
 
 export const Routes = () => {
     const { hasError, error } = useSelector((state: StoreState) => state.errorReducer);
@@ -26,9 +28,13 @@ export const Routes = () => {
                 <Switch>
                     <Route path='/' exact component={HomePage}/>
                     <Route path='/department' exact component={AboutDepartment}/>
-                    <Route path='/applicants' exact component={Applicants}/>
-                    <Route path='/student' exact component={Student}/>
-                    <Route path='/articles/scientific' exact component={ScientificActivity}/>
+                    <Route path='/applicants/bach' exact component={Applicants}/>
+                    <Route path='/applicants/magistracy' exact component={Masters}/>
+                    <Route path='/student/disciplines' exact component={Student}/>
+                    <Route path='/student/methodics' exact component={MethodicalSupport}/>
+                    <Route path='/articles/scientific/articles' exact component={ScientificActivity}/>
+                    <Route path='/articles/scientific/events' exact component={Events}/>
+                    <Route path='/articles/scientific/developments' exact component={ScientificDevelopments}/>
                     <Route path='/news' exact component={News} />
                     <Route path='/news/:id' exact component={NewsItem} />
                 </Switch>

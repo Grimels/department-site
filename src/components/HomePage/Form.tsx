@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Formik } from 'formik';
+import { Button as StrapButton } from 'reactstrap';
 
 import { Form as StyledForm, StyledStrapForm } from 'styled/HomePage/Form';
 import { Input, InvalidLabel } from 'styled/Input';
@@ -16,6 +17,24 @@ import {
 	placeholdersMap,
 	buttonTextMap,
 } from './constants/form';
+import { ENG, RU, UA } from 'constants/language';
+import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import { supportDataService } from 'dataServices/SupportDataService';
+
+const defaultAnswer = {
+	[UA]: [
+		`Дякуємо за запитання!`,
+		`Повідомлення успішно відправлено! Найближчим часом Вам на електронну пошту буде відправлений відповідь.`
+	],
+	[RU]: [
+		`Спасибо за вопрос!`,
+		`Сообщение успешно отправлено! В ближайшее время Вам на электронную почту будет отправлен ответ.`
+	],
+	[ENG]: [
+		`Thanks for your question!`,
+		`Message sent successfully! An answer will be sent to you in the near future.`
+	],
+};
 
 export interface ISubscribeFormValues {
 	name?: string;
@@ -26,6 +45,9 @@ export interface ISubscribeFormValues {
 
 export const Form: React.FC<IHomePageSection> = ({ language }) => {
 	const placeholders = placeholdersMap.get(language);
+	const [modal, setModal] = React.useState(false);
+	const toggle = () => setModal(!modal);
+
 	return (
 		<StyledForm
 			id='apply-rules'
@@ -37,10 +59,8 @@ export const Form: React.FC<IHomePageSection> = ({ language }) => {
 				initialValues={{ name: '', surName: '', email: '', question: '' }}
 				validate={values => validateSubscribeFormValues(values, language)}
 				onSubmit={(values, { setSubmitting }) => {
-					setTimeout(() => {
-						alert(JSON.stringify(values, null, 2));
-						setSubmitting(false);
-					}, 400);
+					supportDataService.send(values);
+					toggle();
 				}}
 			>
 				{({
@@ -109,6 +129,15 @@ export const Form: React.FC<IHomePageSection> = ({ language }) => {
 					</StyledStrapForm>
 				)}
 			</Formik>
+			<Modal isOpen={modal} toggle={toggle}>
+				<ModalHeader toggle={toggle}>{defaultAnswer[language][0]}</ModalHeader>
+				<ModalBody>
+					{defaultAnswer[language][1]}
+				</ModalBody>
+				<ModalFooter>
+					<StrapButton color="link" onClick={toggle}>OK</StrapButton>
+				</ModalFooter>
+			</Modal>
 		</StyledForm>
 	);
 };

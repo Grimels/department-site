@@ -9,10 +9,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { StoreState } from 'store';
 import { setArticles } from 'store/PostsStore';
 
-const headerByLanguage = {
-    [UA]: 'Наукова Діяльність',
-    [RU]: 'Научная Деятельность',
-    [ENG]: 'Scientific Activity',
+export const SCIENTIFIC_ARTICLES_HEADER = {
+    [UA]: 'Наукові Статті',
+    [RU]: 'Научные Статьи',
+    [ENG]: 'Scientific Articles',
 };
 
 export const ScientificActivity: React.FC = () => {
@@ -32,7 +32,7 @@ export const ScientificActivity: React.FC = () => {
     }
 
     const props = {
-        header: headerByLanguage[language],
+        header: SCIENTIFIC_ARTICLES_HEADER[language],
         renderElement: () => <Articles items={articles}/>,
     };
     return <DefaultPage>{props}</DefaultPage>;

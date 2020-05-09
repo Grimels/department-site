@@ -11,9 +11,10 @@ export interface DeleteArticleProps {
     article: IArticle;
     toggle: () => void;
     isOpen?: boolean;
+    setInfoMessage: (msg: string) => void;
 }
 
-export const DeleteArticle: React.FC<DeleteArticleProps> = ({ type, isOpen = true, article, toggle }) => {
+export const DeleteArticle: React.FC<DeleteArticleProps> = ({ setInfoMessage, type, isOpen = true, article, toggle }) => {
     const dispatch = useDispatch();
 
     return (
@@ -28,7 +29,7 @@ export const DeleteArticle: React.FC<DeleteArticleProps> = ({ type, isOpen = tru
                     onClick={() => {
                         article && postsDataService
                             .deleteArticle(article.id)
-                            .then(() => alert('Удалено'))
+                            .then(() => setInfoMessage('Запись успешно удалена.'))
                             .catch(error => dispatch(raiseError(error.message)))
                             .finally(() => {
                                 if(type === 'news') {

@@ -8,7 +8,6 @@ export const HomePageContainer = styled.div`
 	text-align: center;
 
 	& > * {
-		max-width: 1349px;
 		margin: 0 auto;
 	}
 `;

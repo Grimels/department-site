@@ -16,6 +16,7 @@ export const AdminContainer = styled.div`
 `;
 
 export const AdminNavBarBrand = styled(NavbarBrand)`
+    text-align: center;
 	background-color: ${ADMIN_DARK_BG_COLOR};
 	color: ${ADMIN_TEXT_COLOR}!important;
 

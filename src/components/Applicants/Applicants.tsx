@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { DefaultPage } from 'components/DefaultPage';
-import { FlexContainer } from 'styled/FlexContainer';
 
 import { useLanguage } from 'hooks/useLanguage';
 import { applicantsTextDataByLanguage } from './constants';
@@ -14,12 +13,5 @@ export const Applicants: React.FC = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    return (
-        <FlexContainer>
-            <DefaultPage image={Image} textData={applicantsTextDataByLanguage.get(language)}/>
-            <div>
-
-            </div>
-        </FlexContainer>
-    );
+    return (<DefaultPage image={Image} textData={applicantsTextDataByLanguage.get(language)}/>);
 };

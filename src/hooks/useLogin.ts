@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Cookies from 'js-cookie';
 
 import { IUser, setIsLoggedIn } from 'store/LoginStore';
 import { StoreState } from 'store';
@@ -19,7 +18,7 @@ export const useLogin = () => {
         if (savedUserData) {
             dispatch(setIsLoggedIn(true, savedUserData));
         }
-    }, [dispatch]);
+    }, []);
 
     const login = (data: ILoginForm, setSubmitting: (isSubmitting: boolean) => void) => {
         userDataService.login(data)

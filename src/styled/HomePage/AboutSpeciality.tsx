@@ -9,11 +9,11 @@ import {
 	CONTENT_MARGIN_SIDE,
 	ButtonWrapper,
 } from './About';
+import { ImageContainer, renderSectionImage } from 'styled/ImageContainer';
 
 import { MAIN_COLOR } from 'styled/constants';
 
-import Screen2Image from 'assets/images/screen_2.png';
-import { ImageContainer, renderSectionImage } from 'styled/ImageContainer';
+import Screen2Image from 'assets/images/screen_2.jpg';
 
 const ImageTitle = styled.p`
 	display: none;

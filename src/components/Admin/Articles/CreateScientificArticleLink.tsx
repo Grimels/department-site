@@ -14,7 +14,7 @@ import { setNews } from 'store/PostsStore';
 import { raiseError } from 'store/ErrorStore';
 import { useDispatch } from 'react-redux';
 
-export const CreateScientificArticleLink: React.FC = () => {
+export const CreateScientificArticleLink: React.FC<{ setInfoMessage: (msg: string) => void; }> = ({ setInfoMessage }) => {
     const [ subject, setSubject ] = React.useState('');
     const [ text, setText ] = React.useState('');
 
@@ -33,11 +33,11 @@ export const CreateScientificArticleLink: React.FC = () => {
             .then(() => {
                 setSubject('');
                 setText('');
-                alert('Ссылку на статью успешно добавлено!');
+                setInfoMessage('Ссылку на статью успешно добавлено!');
             })
             .then(() => postsDataService.getArticles())
             .then(returnedNews => dispatch(setNews(returnedNews)))
-            .catch(error => dispatch(raiseError(error.message)));
+            .catch(error => setInfoMessage(error.message));
     };
 
     const onChange = ({ target }: React.SyntheticEvent) => {

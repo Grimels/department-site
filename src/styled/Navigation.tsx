@@ -104,6 +104,11 @@ const NavLink = styled(RouteNavLink)`
 	${linkStyle}
 `;
 
+const DropdownNavLink = styled(NavLink)`
+	${linkStyle};
+	padding: 10px;
+`;
+
 export {
 	Navbar,
 	NavbarBrand,
@@ -115,4 +120,5 @@ export {
 	NavLink,
 	DropdownToggle,
 	DropdownMenu,
+	DropdownNavLink
 };

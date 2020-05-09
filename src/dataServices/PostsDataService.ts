@@ -44,7 +44,7 @@ const PostsDataService: () => IPostsDataService = () => {
             language: article.language,
             id: article.id,
         };
-        return await abstractFetch(PATCH, `${API_POSTS}`, updateArticleRequest) as Promise<IArticle>;
+        return await abstractFetch(PATCH, `${API_POSTS}`, updateArticleRequest, { 'content-type': 'application/json'}) as Promise<IArticle>;
     };
 
     const getNews = async () => {

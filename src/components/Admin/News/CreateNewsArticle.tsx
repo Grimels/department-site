@@ -15,9 +15,8 @@ import { Input } from 'styled/Input';
 
 import { ICreateArticleRequest, postsDataService } from 'dataServices/PostsDataService';
 import { setNews } from 'store/PostsStore';
-import { raiseError } from 'store/ErrorStore';
 
-export const CreateNewsArticle: React.FC = () => {
+export const CreateNewsArticle: React.FC<{ setInfoMessage: (msg: string) => void; }> = ({ setInfoMessage }) => {
     const [ header, setHeader ] = useState<string>('');
     const [ body, setBody ] = useState<string>('');
 
@@ -38,10 +37,10 @@ export const CreateNewsArticle: React.FC = () => {
         };
 
         postsDataService.createArticle(article)
-            .then(() => alert('Новость добавлено!'))
+            .then(() => setInfoMessage('Запись успешно добавлено!'))
             .then(() => postsDataService.getNews())
             .then(returnedNews => dispatch(setNews(returnedNews)))
-            .catch(error => dispatch(raiseError(error.message)));
+            .catch(error => setInfoMessage(error.message));
     };
 
     return (

@@ -8,10 +8,15 @@ import { StoreState } from 'store';
 import { postsDataService } from 'dataServices/PostsDataService';
 
 const StyledNewsItem = styled.div`
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   margin: 50px 40px;
   padding: 0 40px;
+  
+  img {
+    max-width: 80vw;
+  }
 `;
 
 const StyledH3 = styled.h3`

@@ -6,7 +6,7 @@ export const DELETE = 'DELETE';
 
 export type RestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
-export const abstractFetch = async (method: RestMethod, url: string, body?: object, headers = {}) => {
+export const abstractFetch = async (method: RestMethod, url: string, body?: object | string, headers = {}) => {
     return await fetch(`/api${url}`, {
         method,
         headers: {
@@ -16,9 +16,13 @@ export const abstractFetch = async (method: RestMethod, url: string, body?: obje
         credentials: 'same-origin',
         body: JSON.stringify(body),
     })
-        .then(response => {
+        .then(async (response) => {
             if (!response.ok) {
-                throw Error(JSON.stringify(response.body));
+                const data = await response.json();
+                throw Error(data.message);
+            }
+            if(response.status === 201) {
+                return;
             }
             return response.json();
         });
