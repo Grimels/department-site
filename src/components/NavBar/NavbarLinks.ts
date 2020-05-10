@@ -2,6 +2,7 @@ import { Language, UA, ENG, RU } from 'constants/language';
 import { SCIENTIFIC_ARTICLES_HEADER, SCIENTIFIC_DEVELOPMENTS_HEADER } from 'components/ScientificActivity';
 import { METHODICAL_SUUPORT_HEADER } from 'components/Student/MethodicalSupport';
 import { MASTERS_HEADER } from 'components/Applicants/Masters';
+import { ABOUT_SPECIALITY } from 'components/AboutSpeciality/constants';
 
 export interface NavigationLink {
 	name: string;
@@ -47,6 +48,7 @@ const uaLinks: NavigationLink[] = [
 		]
 	},
 	{ name: 'Про Кафедру', route: '/department' },
+	{ name: ABOUT_SPECIALITY[UA], route: '/speciality' },
 	{ name: 'Наукова Діяльність', route: '/articles/scientific', routes: [
 			{
 				name: SCIENTIFIC_ARTICLES_HEADER[UA],
@@ -90,6 +92,7 @@ const ruLinks: NavigationLink[] = [
 		]
 	},
 	{ name: 'О Кафедре', route: '/department' },
+	{ name: ABOUT_SPECIALITY[RU], route: '/speciality' },
 	{ name: 'Научная Деятельность', route: '/articles/scientific', routes: [
 			{
 				name: SCIENTIFIC_ARTICLES_HEADER[RU],
@@ -123,6 +126,7 @@ const engLinks: NavigationLink[] = [
 		]
 },
 	{ name: 'About Department', route: '/department' },
+	{ name: ABOUT_SPECIALITY[ENG], route: '/speciality' },
 	{ name: 'Scientific Activity', route: '/articles/scientific', routes: [
 			{
 				name: SCIENTIFIC_ARTICLES_HEADER[ENG],

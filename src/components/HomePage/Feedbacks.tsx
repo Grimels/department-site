@@ -10,7 +10,7 @@ import { IHomePageSection } from './HomePage';
 import { Feedback, FEEDBACKS, headerByLanguage } from './constants/feedbacks';
 import { FlexContainer } from 'styled/FlexContainer';
 
-export const Feedbacks: React.SFC<IHomePageSection> = ({ language }) => {
+export const Feedbacks: React.FC<IHomePageSection> = ({ language }) => {
 	const headerText = headerByLanguage.get(language);
 
 	return (

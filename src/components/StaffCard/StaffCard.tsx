@@ -46,9 +46,32 @@ export const StaffCard: React.FC<{ staff: Staff }> = ({ staff }) => {
                     ) : null
                 }
                 {
+                    staff?.contacts?.orcidId && (
+                        <>
+                            <p><strong>ORCID ID: </strong><a target='_blank'
+                                                             href={staff.contacts.orcidId}>link</a></p>
+                        </>
+                    )
+                }
+                {
+                    staff?.contacts?.ResearcherID && (
+                        <>
+                            <p><strong>Researcher ID: </strong><a target='_blank'
+                                                                   href={staff.contacts.ResearcherID.link}>{staff.contacts.ResearcherID.id}</a></p>
+                        </>
+                    )
+                }
+                {
+                    staff?.contacts?.['Scopus Author ID'] && staff?.contacts?.['Scopus Author ID']?.map(linkId =>
+                        <>
+                            <p><strong>Scopus Author ID: </strong><a target='_blank'
+                                                                  href={linkId.link}>{linkId.id}</a></p>
+                        </>
+                    )
+                }
+                {
                     staff?.contacts?.googleAcademy && (
                         <>
-                            <br/>
                             <p><strong>Google Academy: </strong><a target='_blank'
                                                                    href={staff.contacts.googleAcademy}>link</a></p>
                         </>

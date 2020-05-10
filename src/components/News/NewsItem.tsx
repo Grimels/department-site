@@ -29,7 +29,6 @@ export const NewsItem: React.FC<{ match: { params: { id: string } } }> = ({ matc
     const [ newsItem, setNewsItem ] = React.useState((news || []).find(item => item.id === id));
 
     React.useEffect(() => {
-        console.log(id)
         if (!newsItem) {
             postsDataService.getNewsItem(id)
                 .then(returnedNewsItem => setNewsItem(returnedNewsItem));

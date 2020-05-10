@@ -123,7 +123,7 @@ export const Admin: React.FC<RouteComponentProps & { userData?: IUser, logout: (
             <Switch>
                 <Route path='/admin/create/news' exact component={() => <CreateNewsArticle setInfoMessage={setInfoMessage} />}/>
                 <Route path='/admin/create/articles' exact component={() => <CreateScientificArticleLink setInfoMessage={setInfoMessage} />}/>
-                {/*userData.isAdmin && <Route path='/admin/users' exact component={() => <Users userData={userData} createItemPath='/users' users={users} />} />*/}
+                {userData.isAdmin && <Route path='/admin/users' exact component={() => <Users userData={userData} createItemPath='/users' users={users} />} />}
                 {userData.isAdmin && <Route path='/admin/create/users' exact component={() => <CreateUser setInfoMessage={setInfoMessage}/>}/>}
 
                 <Route

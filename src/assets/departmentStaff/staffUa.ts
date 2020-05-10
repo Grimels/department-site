@@ -49,11 +49,6 @@ export const uaStaff: Staff[] = [
         ],
         'contacts': {
             'orcidId': 'http://orcid.org/0000-0002-8383-2675',
-            'Scopus Author ID': [
-                {
-                    'id': '57195064619'
-                }
-            ],
             'googleAcademy': 'https://scholar.google.com.ua/citations?user=ltaubw4AAAAJ&hl=uk'
         },
         'disciplines': [

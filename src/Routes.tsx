@@ -17,6 +17,7 @@ import { News } from 'components/News';
 import { NewsItem } from 'components/News/NewsItem';
 import { MethodicalSupport } from 'components/Student/MethodicalSupport';
 import { Masters } from 'components/Applicants/Masters';
+import { AboutSpeciality } from 'components/AboutSpeciality';
 
 export const Routes = () => {
     const { hasError, error } = useSelector((state: StoreState) => state.errorReducer);
@@ -28,6 +29,7 @@ export const Routes = () => {
                 <Switch>
                     <Route path='/' exact component={HomePage}/>
                     <Route path='/department' exact component={AboutDepartment}/>
+                    <Route path='/speciality' exact component={AboutSpeciality}/>
                     <Route path='/applicants/bach' exact component={Applicants}/>
                     <Route path='/applicants/magistracy' exact component={Masters}/>
                     <Route path='/student/disciplines' exact component={Student}/>

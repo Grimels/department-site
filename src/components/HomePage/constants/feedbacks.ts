@@ -20,15 +20,15 @@ export const FEEDBACKS: Feedback[] = [
 		text: new Map([
 			[
 				UA,
-				`Через 3 роки після закінчення інституту я з теплотою згадую студентські роки і викладачів кафедри. Ці люди не тільки професіонали своєї справи, а й власники безцінного досвіду, яким завжди готові поділитися зі своїми студентами. Тим, хто хоче вивчати комп’ютерні науки спільно з управлінням проектами, я можу порадити тільки цю кафедру`,
+				`Після закінчення інституту я з теплотою згадую студентські роки і викладачів кафедри. Ці люди не тільки професіонали своєї справи, а й власники безцінного досвіду, яким завжди готові поділитися зі своїми студентами. Тим, хто хоче вивчати комп’ютерні науки спільно з управлінням проектами, я можу порадити тільки цю кафедру`,
 			],
 			[
 				RU,
-				`Через 3 года после окончания института я с теплотой вспоминаю студенческие годы и преподавателей кафедры. Эти люди не только профессионалы своего дела, но и владельцы бесценный опыт, которым всегда готовы поделиться со своими студентами. Тем, кто хочет изучать компьютерные науки совместно с управлением проектами, я могу посоветовать только эту кафедру`,
+				`После окончания института я с теплотой вспоминаю студенческие годы и преподавателей кафедры. Эти люди не только профессионалы своего дела, но и владельцы бесценный опыт, которым всегда готовы поделиться со своими студентами. Тем, кто хочет изучать компьютерные науки совместно с управлением проектами, я могу посоветовать только эту кафедру`,
 			],
 			[
 				ENG,
-				`3 years after graduation, I warmly remember the student years and the teachers of the department. These people are not only professionals, but also owners of the invaluable experience they are always ready to share with their students. For those who want to study computer science in conjunction with project management, I can only advise this department`,
+				`After graduation, I warmly remember the student years and the teachers of the department. These people are not only professionals, but also owners of the invaluable experience they are always ready to share with their students. For those who want to study computer science in conjunction with project management, I can only advise this department`,
 			],
 		]),
 		img: AnnaKishkinovaImg,

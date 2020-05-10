@@ -17,7 +17,7 @@ const UserDataService: () => IUserDataService = () => {
     }
 
     const getUsers = async () => {
-        return await abstractFetch(GET, `${API_USERS}/admin`) as Promise<IUser[]>;
+        return await abstractFetch(GET, `${API_USERS}`) as Promise<IUser[]>;
     }
 
     const login = async (loginData: ILoginForm) => {

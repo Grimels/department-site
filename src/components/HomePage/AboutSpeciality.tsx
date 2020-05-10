@@ -11,7 +11,7 @@ export const AboutSpeciality: React.FC<IHomePageSection> = ({ language }) => {
 	const history = useHistory();
 
 	const currentData = aboutSpecialityTextDataMap.get(language);
-	const ButtonComponent = <Button onClick={() => history.push('/applicants/bach')}>{currentData?.button}</Button>;
+	const ButtonComponent = <Button onClick={() => history.push('/speciality')}>{currentData?.button}</Button>;
 	return (
 		<StyledAboutSpeciality
 			header={currentData?.name || ''}
