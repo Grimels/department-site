@@ -19,9 +19,9 @@ export const DeleteArticle: React.FC<DeleteArticleProps> = ({ setInfoMessage, ty
 
     return (
         <Modal isOpen={isOpen} dark>
-            <ModalHeader toggle={toggle}>Редактировать</ModalHeader>
+            <ModalHeader toggle={toggle}>Удалить запись</ModalHeader>
             <ModalBody>
-                Вы уверены что хотите удалить запись <strong>{article.subject}</strong>?
+                Вы уверены что хотите удалить запись "<strong>{article.subject}</strong>"?
             </ModalBody>
             <ModalFooter>
                 <Button
@@ -45,8 +45,8 @@ export const DeleteArticle: React.FC<DeleteArticleProps> = ({ setInfoMessage, ty
                 >
                     Удалить
                 </Button>
-                <Button color='secondary' onClick={toggle}>
-                    Нет
+                <Button color='primary' onClick={toggle}>
+                    Отмена
                 </Button>
             </ModalFooter>
         </Modal>

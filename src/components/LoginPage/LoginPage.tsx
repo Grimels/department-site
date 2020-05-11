@@ -46,7 +46,7 @@ export const LoginPage: React.FC<LoginPageProps> = () => {
 	return (
 		<StyledLoginContainer>
 			<Card>
-				<CardHeader styles={{ textAlign: 'center' }}>
+				<CardHeader style={{ textAlign: 'center' }}>
 					<h3>Вход</h3>
 				</CardHeader>
 
@@ -66,7 +66,7 @@ export const LoginPage: React.FC<LoginPageProps> = () => {
 						}) => (
 							<StyledStrapForm onSubmit={handleSubmit}>
 								<Input
-									placeholder='Логин'
+									placeholder='Электронная почта'
 									name='email'
 									type='email'
 									onChange={handleChange}

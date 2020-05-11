@@ -23,6 +23,7 @@ import NewsImg from 'assets/icons/news.png';
 import ArticleImg from 'assets/icons/article.png';
 import LogoutImg from 'assets/icons/logout.png';
 import UserImg from 'assets/icons/user.png';
+import AdminImg from 'assets/icons/admin.png';
 import { postsDataService } from 'dataServices/PostsDataService';
 
 import { StoreState } from 'store';
@@ -97,7 +98,7 @@ export const Admin: React.FC<RouteComponentProps & { userData?: IUser, logout: (
 
     const renderProfile = () => (
         <Profile className='item'>
-            <ProfileImage src='https://www.shareicon.net/data/512x512/2016/08/18/814068_face_512x512.png'/>
+            <ProfileImage src={AdminImg} />
             <ProfileDataContainer>
                 <Text margin={{ bottom: '0' }} size='18px' color={ADMIN_SECONDARY_TEXT_COLOR}>
                     {userData.email || ''}

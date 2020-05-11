@@ -27,6 +27,9 @@ const StyledH3 = styled.h3`
 export const NewsItem: React.FC<{ match: { params: { id: string } } }> = ({ match: { params: { id } } }) => {
     const { news } = useSelector((state: StoreState) => state.postsReducer);
     const [ newsItem, setNewsItem ] = React.useState((news || []).find(item => item.id === id));
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     React.useEffect(() => {
         if (!newsItem) {

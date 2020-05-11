@@ -5,3 +5,9 @@ export const HEADER_BY_LANG = {
     [RU]: 'Новости',
     [ENG]: 'News',
 }
+
+export const READ_MORE_TEXT = {
+    [UA]: 'Читати Далі',
+    [RU]: 'Читать Далее',
+    [ENG]: 'Read More',
+}

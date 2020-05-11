@@ -16,8 +16,7 @@ export const TextEditor: React.FC<ITextEditor> = ({ onChange, ...props }) => {
         <SunEditor
             onChange={onChange}
             setOptions={{
-                maxHeight: '50vh',
-                height: '50vh',
+                height: '100%',
                 minHeight: '400px',
                 buttonList: [
                     [ 'undo', 'redo' ],
@@ -28,7 +27,7 @@ export const TextEditor: React.FC<ITextEditor> = ({ onChange, ...props }) => {
                     [ 'removeFormat' ],
                     [ 'outdent', 'indent' ],
                     [ 'align', 'horizontalRule', 'list', 'lineHeight' ],
-                    [ 'table', 'link', 'image', 'video', 'math' ],
+                    [ 'table', 'link', 'image', 'math' ],
                     [ 'fullScreen', 'showBlocks', 'codeView' ],
                     [ 'preview', 'print' ],
                 ],

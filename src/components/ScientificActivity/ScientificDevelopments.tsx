@@ -8,7 +8,7 @@ import { DefaultPage } from 'components/DefaultPage';
 export const SCIENTIFIC_DEVELOPMENTS_HEADER = {
     [UA]: 'Інноваційні розробки кафедри',
     [RU]: 'Инновационные предложения кафедры',
-    [ENG]: 'Scientific Developments\n',
+    [ENG]: 'Scientific Developments',
 };
 
 const DEPLOYMENTS_UA = [
