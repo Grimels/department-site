@@ -18,6 +18,8 @@ import { NewsItem } from 'components/News/NewsItem';
 import { MethodicalSupport } from 'components/Student/MethodicalSupport';
 import { Masters } from 'components/Applicants/Masters';
 import { AboutSpeciality } from 'components/AboutSpeciality';
+import { DefendedDissertations } from 'components/ScientificActivity/DefendedDissertations';
+import { BussinessEducation, CompletedProjects, ManagementConsulting } from 'components/OurServices';
 
 export const Routes = () => {
     const { hasError, error } = useSelector((state: StoreState) => state.errorReducer);
@@ -34,9 +36,13 @@ export const Routes = () => {
                     <Route path='/applicants/magistracy' exact component={Masters}/>
                     <Route path='/student/disciplines' exact component={Student}/>
                     <Route path='/student/methodics' exact component={MethodicalSupport}/>
-                    <Route path='/articles/scientific/articles' exact component={ScientificActivity}/>
-                    <Route path='/articles/scientific/events' exact component={Events}/>
-                    <Route path='/articles/scientific/developments' exact component={ScientificDevelopments}/>
+                    <Route path='/scientific/articles' exact component={ScientificActivity}/>
+                    <Route path='/scientific/events' exact component={Events}/>
+                    <Route path='/scientific/developments' exact component={ScientificDevelopments}/>
+                    <Route path='/scientific/dissertations' exact component={DefendedDissertations}/>
+                    <Route path='/services/consulting' exact component={ManagementConsulting}/>
+                    <Route path='/services/projects' exact component={CompletedProjects}/>
+                    <Route path='/services/training' exact component={BussinessEducation}/>
                     <Route path='/news' exact component={News} />
                     <Route path='/news/:id' exact component={NewsItem} />
                 </Switch>

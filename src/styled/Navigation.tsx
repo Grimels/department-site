@@ -109,6 +109,11 @@ const DropdownNavLink = styled(NavLink)`
 	padding: 10px;
 `;
 
+const DropdownExternalLink = styled.a`
+	${linkStyle};
+	padding: 10px;
+`;
+
 export {
 	Navbar,
 	NavbarBrand,
@@ -120,5 +125,6 @@ export {
 	NavLink,
 	DropdownToggle,
 	DropdownMenu,
-	DropdownNavLink
+	DropdownNavLink,
+	DropdownExternalLink,
 };

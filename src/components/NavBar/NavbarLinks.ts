@@ -7,6 +7,7 @@ import { ABOUT_SPECIALITY } from 'components/AboutSpeciality/constants';
 export interface NavigationLink {
 	name: string;
 	route: string;
+	link?: string;
 	routes?: NavigationLink[];
 }
 
@@ -49,7 +50,7 @@ const uaLinks: NavigationLink[] = [
 	},
 	{ name: 'Про Кафедру', route: '/department' },
 	{ name: ABOUT_SPECIALITY[UA], route: '/speciality' },
-	{ name: 'Наукова Діяльність', route: '/articles/scientific', routes: [
+	{ name: 'Наукова Діяльність', route: '/scientific', routes: [
 			{
 				name: SCIENTIFIC_ARTICLES_HEADER[UA],
 				route: '/articles'
@@ -61,6 +62,38 @@ const uaLinks: NavigationLink[] = [
 			{
 				name: SCIENTIFIC_DEVELOPMENTS_HEADER[UA],
 				route: '/developments'
+			},
+			{
+				name: 'Захищені Дисертації',
+				route: '/dissertations'
+			},
+			{
+				name: 'Конференція',
+				route: '',
+				link: 'http://www.imconf.com.ua/',
+			},
+			{
+				name: 'Науковий журнал "Вісник НТУ «ХПІ»"',
+				route: '',
+				link: 'http://pm.khpi.edu.ua/',
+			},
+			{
+				name: 'Наші Послуги',
+				route: '/services',
+				routes: [
+					{
+						name: 'Управлінський Консалтинг',
+						route: '/consulting'
+					},
+					{
+						name: 'Бізнес-Освіта та Навчання',
+						route: '/training'
+					},
+					{
+						name: 'Виконані Проєкти',
+						route: '/projects'
+					},
+				]
 			}
 		]
 	},
@@ -93,7 +126,7 @@ const ruLinks: NavigationLink[] = [
 	},
 	{ name: 'О Кафедре', route: '/department' },
 	{ name: ABOUT_SPECIALITY[RU], route: '/speciality' },
-	{ name: 'Научная Деятельность', route: '/articles/scientific', routes: [
+	{ name: 'Научная Деятельность', route: '/scientific', routes: [
 			{
 				name: SCIENTIFIC_ARTICLES_HEADER[RU],
 				route: '/articles'
@@ -105,6 +138,38 @@ const ruLinks: NavigationLink[] = [
 			{
 				name: SCIENTIFIC_DEVELOPMENTS_HEADER[RU],
 				route: '/developments'
+			},
+			{
+				name: 'Защищенные Дисертации',
+				route: '/dissertations'
+			},
+			{
+				name: 'Конференция',
+				route: '',
+				link: 'http://www.imconf.com.ua/',
+			},
+			{
+				name: 'Научный журнал "Вестник НТУ «ХПИ»"',
+				route: '',
+				link: 'http://pm.khpi.edu.ua/',
+			},
+			{
+				name: 'Наши Услуги',
+				route: '/services',
+				routes: [
+					{
+						name: 'Управленческий Консалтинг',
+						route: '/consulting'
+					},
+					{
+						name: 'Бизнес-Обучение и Тренинги',
+						route: '/training'
+					},
+					{
+						name: 'Реализованные Проекты',
+						route: '/projects'
+					},
+				]
 			}
 		]
 	},
@@ -127,7 +192,7 @@ const engLinks: NavigationLink[] = [
 },
 	{ name: 'About Department', route: '/department' },
 	{ name: ABOUT_SPECIALITY[ENG], route: '/speciality' },
-	{ name: 'Scientific Activity', route: '/articles/scientific', routes: [
+	{ name: 'Scientific Activity', route: '/scientific', routes: [
 			{
 				name: SCIENTIFIC_ARTICLES_HEADER[ENG],
 				route: '/articles'
@@ -139,6 +204,38 @@ const engLinks: NavigationLink[] = [
 			{
 				name: SCIENTIFIC_DEVELOPMENTS_HEADER[ENG],
 				route: '/developments'
+			},
+			{
+				name: 'Defended Dissertations',
+				route: '/dissertations'
+			},
+			{
+				name: 'Conference',
+				route: '',
+				link: 'http://www.imconf.com.ua/',
+			},
+			{
+				name: 'Scientific journal "Bulletin of NTU «KhPI»"',
+				route: '',
+				link: 'http://pm.khpi.edu.ua/',
+			},
+			{
+				name: 'Our Services',
+				route: '/services',
+				routes: [
+					{
+						name: 'Management Consulting',
+						route: '/consulting'
+					},
+					{
+						name: 'Business Education and Training',
+						route: '/training'
+					},
+					{
+						name: 'Completed Projects',
+						route: '/projects'
+					},
+				]
 			}
 		]
 	},

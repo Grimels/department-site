@@ -25,7 +25,6 @@ export const ScientificActivity: React.FC = () => {
             postsDataService.getArticles().then(returnedArticles => dispatch(setArticles(returnedArticles)));
         }
     }, [articles]);
-    console.log(articles);
 
     if (!articles) {
         return <Spinner/>;

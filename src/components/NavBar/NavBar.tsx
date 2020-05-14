@@ -13,7 +13,7 @@ import {
     LanguageIcon,
     Nav,
     DropdownToggle,
-    DropdownMenu, DropdownNavLink,
+    DropdownMenu, DropdownNavLink, DropdownExternalLink,
 } from 'styled/Navigation';
 import { TextAndIcon } from 'styled/Icon';
 
@@ -49,33 +49,48 @@ export const NavBar: React.FC = () => {
         document.title = getUniversityName(language);
     }, [ setLanguage ]);
 
-    const renderNestedNavLink = (parentPath: string, navLink: NavigationLink) => (
-        <DropdownNavLink to={`${parentPath}${navLink.route}`}>{navLink.name}</DropdownNavLink>
-    );
+    const renderNestedNavLink = (parentPath: string, navLink: NavigationLink) => {
+        if (navLink.routes) {
+            return renderNavDropDown(navLink);
+        }
+        if (navLink.link) {
+            return <DropdownExternalLink href={navLink.link} target='_blank'>{navLink.name}</DropdownExternalLink>;
+        }
+        return <DropdownNavLink to={`${parentPath}${navLink.route}`}>{navLink.name}</DropdownNavLink>;
+    };
+
+    const renderNavigationItemStrategy = (navLink: NavigationLink) => {
+        if (navLink.routes) {
+            return renderNavDropDown(navLink);
+        }
+        return <NavLink to={navLink.route}>{navLink.name}</NavLink>;
+    };
 
     const renderNavLink = (navLink: NavigationLink) => (
         <NavItem key={navLink.name}>
-            {navLink.routes ? (
-                renderNavDropDown(navLink)
-            ) : (
-                <NavLink to={navLink.route}>{navLink.name}</NavLink>
-            )}
+            {renderNavigationItemStrategy(navLink)}
         </NavItem>
     );
 
     const renderNavLinks = (navLinks: NavigationLink[]) => navLinks.map(renderNavLink);
 
     const renderNavDropDownItem = (parentPath: string, navLinks: NavigationLink[]) => {
-        return navLinks.map((navLink) => <StyledDropdownItem>{renderNestedNavLink(parentPath, navLink)}</StyledDropdownItem>);
+        return navLinks.map((navLink) => {
+            if(navLink.routes) {
+                return renderNavDropDown(navLink, true);
+            }
+            return <StyledDropdownItem>{renderNestedNavLink(parentPath, navLink)}</StyledDropdownItem>;
+        });
     };
 
-    const renderNavDropDown = (navLink: NavigationLink) => {
+    const renderNavDropDown = (navLink: NavigationLink, isNested = false) => {
         return (
             <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav>
+                <DropdownToggle nav style={isNested ? { color: MAIN_COLOR, padding: '0.25rem 1.5rem', margin: '10px 20px' } : {}}>
                     <TextAndIcon icon={DOWN_ARROW_ICON} text={navLink.name}/>
                 </DropdownToggle>
-                <StyledDropdown right>{navLink.routes && renderNavDropDownItem(navLink.route, navLink.routes)}</StyledDropdown>
+                <StyledDropdown
+                    right>{navLink.routes && renderNavDropDownItem(navLink.route, navLink.routes)}</StyledDropdown>
             </UncontrolledDropdown>
         );
     };

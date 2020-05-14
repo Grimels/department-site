@@ -18,8 +18,10 @@ export const ScientificArticlesContainer = styled.div`
 	padding: 40px;
 
 	img {
-		width: 64px;
-		height: 64px;
+		min-width: 64px;
+		max-width: 64px;
+		min-height: 64px;
+		max-height: 64px;
 
 		margin-right: 20px;
 	}
@@ -28,5 +30,5 @@ export const ScientificArticlesContainer = styled.div`
         &::placeholder {
             color: ${ADMIN_TEXT_COLOR};
         }
-\t}
+    } 
 `;

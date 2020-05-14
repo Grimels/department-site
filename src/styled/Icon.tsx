@@ -14,7 +14,7 @@ export const renderIcon = (icon: string) => styled.span`
 	background-size: contain;
 `;
 
-export const TextAndIcon: React.SFC<{ text: string; icon: string }> = ({ text, icon }) => {
+export const TextAndIcon: React.FC<{ text: string; icon: string }> = ({ text, icon }) => {
 	const StyledIcon = styled.span`
 		display: block;
 		line-height: inherit;
