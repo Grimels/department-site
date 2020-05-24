@@ -52,6 +52,13 @@ const Partners = () => (
 		</div>
 		<div>
 			<img
+				src='https://common2.unwe.bg//wwwroot/images/logo-short-en.png'
+				alt=''
+				style={{ backgroundColor: '#760e26', padding: '10px'}}
+			/>
+		</div>
+		<div>
+			<img
 				src='http://www.upma.kiev.ua/sites/all/themes/upma/i/logo.png'
 				alt=''
 			/>
@@ -60,13 +67,6 @@ const Partners = () => (
 			<img
 				src={WYZSA}
 				alt=''
-			/>
-		</div>
-		<div>
-			<img
-				src='https://common2.unwe.bg//wwwroot/images/logo-short-en.png'
-				alt=''
-				style={{ backgroundColor: '#760e26', padding: '10px'}}
 			/>
 		</div>
 
@@ -84,7 +84,7 @@ const Header: React.FC<{className?: string}> = ({ className, children }) => (
 );
 
 const SectionContainer = styled(FlexContainer)`
-	width: 60em;
+	width: 80em;
 	padding: 0 5vw;
 	max-width: 100%;
 	p {

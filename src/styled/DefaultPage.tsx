@@ -5,6 +5,7 @@ export const DefaultPage = styled.div`
 	max-width: 100vw;
 	display: flex;
 	flex-direction: column;
+	flex: 1 1 auto;
 
 	padding: 20px 40px;
 

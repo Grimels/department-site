@@ -13,7 +13,8 @@ const StyledNewsItem = styled.div`
   flex-direction: column;
   margin: 50px 40px;
   padding: 0 40px;
-  
+  flex: 1 1 auto;
+
   img {
     max-width: 80vw;
   }

@@ -9,6 +9,7 @@ const SpinnerContainer = styled.div`
   height: 60vh;
   
   display: flex;
+  flex: 1 1 auto;
   justify-content: center;
   align-items: center;
 `;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { FlexContainer } from 'styled/FlexContainer';
-import { WHITE_COLOR, MAIN_COLOR } from 'styled/constants';
+import {WHITE_COLOR, MAIN_COLOR, NAVBAR_HEIGHT} from 'styled/constants';
 
 import MainBG from 'assets/images/screen_1.jpg';
 
@@ -85,19 +85,19 @@ const Background = styled(BackgroundComponent)`
 `;
 
 const Section = styled(FlexContainer)`
-	height: 100%;
+	height: calc(100vh - ${NAVBAR_HEIGHT});
 
 	background: rgba(0, 0, 0, 0.65);
 	background-repeat: no-repeat;
 	background-size: contain;
 `;
 
-const Block: React.SFC<React.CSSProperties> = ({ children, ...props }) => (
+const Block: React.FC<React.CSSProperties> = ({ children, ...props }) => (
 	<FlexContainer style={props}>{children}</FlexContainer>
 );
 
-const MainBackground: React.SFC = ({ children }) => (
-	<Background bg={MainBG} height='90vh'>
+const MainBackground: React.FC = ({ children }) => (
+	<Background bg={MainBG} height='calc(100vh - ${NAVBAR_HEIGHT})'>
 		<Section>{children}</Section>
 	</Background>
 );

@@ -12,6 +12,8 @@ export const ADMIN_ACTIVE_BG_COLOR = '#354D5A';
 export const IMAGE_WIDTH = '30em';
 export const MIN_SCREEN_IMAGE_WIDTH = '20em';
 
+export const NAVBAR_HEIGHT = '85px';
+
 export interface StyledComponent {
 	style?: React.CSSProperties;
 	className?: string;

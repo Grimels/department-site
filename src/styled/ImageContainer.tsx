@@ -13,7 +13,6 @@ export const ImageContainer = styled.div`
 		box-sizing: border-box;
 		width: ${IMAGE_WIDTH};
 		max-width: ${MAX_WIDTH};
-		height: 50%;
 
 		&::before {
 			content: '';

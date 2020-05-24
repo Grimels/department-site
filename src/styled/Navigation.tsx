@@ -12,13 +12,13 @@ import {
 
 import { NavLink as RouteNavLink } from 'react-router-dom';
 
-import { MAIN_COLOR, WHITE_COLOR } from './constants';
+import {MAIN_COLOR, NAVBAR_HEIGHT, WHITE_COLOR} from './constants';
 
 import MENU_ICON from 'assets/icons/menu.png';
 import LANG_ICON from 'assets/icons/language.png';
 
 const Navbar = styled(DefaultNavbar)`
-	min-height: 85px;
+	min-height: ${NAVBAR_HEIGHT};
 	width: 100%;
 	background-color: ${MAIN_COLOR};
 
