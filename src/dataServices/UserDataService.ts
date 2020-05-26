@@ -1,10 +1,12 @@
-import { abstractFetch, GET, POST } from 'dataServices/AbstractFetch';
+import {abstractFetch, DELETE, GET, POST} from 'dataServices/AbstractFetch';
 import { ILoginForm } from 'components/LoginPage';
 import { IUser } from 'store/LoginStore';
+import {RU} from '../constants/language';
 
 export interface IUserDataService {
     getUsers: () => Promise<IUser[]>,
     createUser: (email: string) => Promise<IUser>,
+    deleteUser: (id: number) => Promise<void>,
     login: (loginData: ILoginForm) => Promise<IUser>,
     logout: () => Promise<object>
 }
@@ -13,7 +15,7 @@ const UserDataService: () => IUserDataService = () => {
     const API_USERS = '/users';
 
     const createUser = async (email: string) => {
-        return await abstractFetch(POST, `${API_USERS}`, { email }) as Promise<IUser>;
+        return await abstractFetch(POST, `${API_USERS}`, { email, language: RU }) as Promise<IUser>;
     }
 
     const getUsers = async () => {
@@ -38,6 +40,10 @@ const UserDataService: () => IUserDataService = () => {
             });
     };
 
+    const deleteUser = async (id: number) => {
+        return await abstractFetch(DELETE, `${API_USERS}/${id}`) as Promise<void>;
+    }
+
     const logout = async () => {
         return await abstractFetch(POST, `${API_USERS}/logout`) as Promise<{}>;
     };
@@ -46,7 +52,8 @@ const UserDataService: () => IUserDataService = () => {
         login,
         logout,
         getUsers,
-        createUser
+        createUser,
+        deleteUser,
     };
 };
 

@@ -24,7 +24,7 @@ import { supportDataService } from 'dataServices/SupportDataService';
 const defaultAnswer = {
 	[UA]: [
 		`Дякуємо за запитання!`,
-		`Повідомлення успішно відправлено! Найближчим часом Вам на електронну пошту буде відправлений відповідь.`
+		`Повідомлення успішно відправлено! Найближчим часом Вам на електронну пошту буде відправлена відповідь.`
 	],
 	[RU]: [
 		`Спасибо за вопрос!`,
@@ -58,8 +58,9 @@ export const Form: React.FC<IHomePageSection> = ({ language }) => {
 			<Formik
 				initialValues={{ name: '', surName: '', email: '', question: '' }}
 				validate={values => validateSubscribeFormValues(values, language)}
-				onSubmit={(values, { setSubmitting }) => {
+				onSubmit={(values, { setSubmitting, resetForm }) => {
 					supportDataService.send(values);
+					resetForm();
 					toggle();
 				}}
 			>

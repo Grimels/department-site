@@ -6,15 +6,24 @@ import 'suneditor/dist/css/suneditor.min.css';
 import 'suneditor/dist/suneditor.min.js';
 
 export interface ITextEditor {
+    setInfoMessage: (msg: string) => void,
     onChange?: (value: string) => void,
     setContents?: string
 }
 
-export const TextEditor: React.FC<ITextEditor> = ({ onChange, ...props }) => {
+export const TextEditor: React.FC<ITextEditor> = ({ setInfoMessage, onChange, ...props }) => {
+    const beforeImageUpload = (files: File[], info: {}) => {
+        if(files.reduce((accum, file) => accum + file.size, 0) < 10000000) {
+            return { files, info };
+        }
+        setInfoMessage('Ошибка! Вы превысили допустимый размер записей (максимум 1.5мб)!')
+    }
 
     return (
         <SunEditor
+            lang="ru"
             onChange={onChange}
+            onImageUploadBefore={beforeImageUpload}
             setOptions={{
                 height: '100%',
                 minHeight: '400px',

@@ -36,14 +36,14 @@ import { Users } from 'components/Admin/Users/Users';
 
 const LogoutIcon = renderIcon(LogoutImg);
 
-const tabs: { icon: string; name: string; path: string }[] = [
+const tabs: { icon: string; name: string; path: string; isSecure?: boolean }[] = [
     { icon: NewsImg, name: 'Новости', path: '/admin/news' },
     { icon: ArticleImg, name: 'Статьи', path: '/admin/articles' },
     { icon: NewsImg, name: 'Создать Новость', path: '/admin/create/news' },
     { icon: NewsImg, name: 'Создать Статью', path: '/admin/create/articles' },
 
-    { icon: UserImg, name: 'Пользователи', path: '/admin/users' },
-    { icon: UserImg, name: 'Создать Пользователя', path: '/admin/create/users' },
+    { icon: UserImg, name: 'Пользователи', path: '/admin/users', isSecure: true },
+    { icon: UserImg, name: 'Создать Пользователя', path: '/admin/create/users', isSecure: true },
 ];
 
 export const Admin: React.FC<RouteComponentProps & { userData?: IUser, logout: () => void }> = withLogin(props => {
@@ -86,6 +86,9 @@ export const Admin: React.FC<RouteComponentProps & { userData?: IUser, logout: (
 
     const renderSideBarTabs = () =>
         tabs.map(tab => {
+            if(tab.isSecure && !userData.isAdmin) {
+                return;
+            }
             const Icon = renderIcon(tab.icon);
             const className = `item ${isActiveSideBarItem(tab.path) ? 'active' : ''}`;
             return (
@@ -124,7 +127,7 @@ export const Admin: React.FC<RouteComponentProps & { userData?: IUser, logout: (
             <Switch>
                 <Route path='/admin/create/news' exact component={() => <CreateNewsArticle setInfoMessage={setInfoMessage} />}/>
                 <Route path='/admin/create/articles' exact component={() => <CreateScientificArticleLink setInfoMessage={setInfoMessage} />}/>
-                {userData.isAdmin && <Route path='/admin/users' exact component={() => <Users userData={userData} createItemPath='/users' users={users} />} />}
+                {userData.isAdmin && <Route path='/admin/users' exact component={() => <Users setInfoMessage={setInfoMessage} userData={userData} createItemPath='/users' users={users} />} />}
                 {userData.isAdmin && <Route path='/admin/create/users' exact component={() => <CreateUser setInfoMessage={setInfoMessage}/>}/>}
 
                 <Route

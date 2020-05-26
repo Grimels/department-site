@@ -22,10 +22,13 @@ export interface ArticlesProps {
 
 export const StyledContainer = styled.div`
   background-color: ${ADMIN_ACTIVE_BG_COLOR};
-  & {
-    width: 100%;
-    height: 100vh;
+  width: 100%;
+  height: 100vh;
+  
+  .tab-pane, .tab-content, .tab-content div {
+    height: 100%;
   }
+  
   .nav-item {
     color: white;
     &:hover {

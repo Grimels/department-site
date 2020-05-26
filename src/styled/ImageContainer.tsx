@@ -11,7 +11,6 @@ export const ImageContainer = styled.div`
 	@media only screen and (min-width: 920px) {
 		border: 2px solid ${MAIN_COLOR};
 		box-sizing: border-box;
-		width: ${IMAGE_WIDTH};
 		max-width: ${MAX_WIDTH};
 
 		&::before {

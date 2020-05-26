@@ -38,7 +38,7 @@ export const EditNewsArticle: React.FC<EditArticleProps> = ({ setInfoMessage, is
                     className='edit-article-header'
                     placeholder='Заголовок'
                 />
-                <TextEditor onChange={setText} setContents={article.text}/>
+                <TextEditor setInfoMessage={setInfoMessage} onChange={setText} setContents={article.text}/>
             </FlexContainer>
         </ModalBody>
         <ModalFooter>

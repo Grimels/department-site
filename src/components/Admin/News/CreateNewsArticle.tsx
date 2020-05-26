@@ -48,10 +48,10 @@ export const CreateNewsArticle: React.FC<{ setInfoMessage: (msg: string) => void
             <CreateArticleHeader>Создать Новость</CreateArticleHeader>
             <EditorContainer>
                 <Input name='text' className='article-header' placeholder='Заголовок' onChange={onHeaderChange}/>
-                <TextEditor onChange={setBody}/>
+                <TextEditor setInfoMessage={setInfoMessage} onChange={setBody}/>
             </EditorContainer>
             <CreateArticleFooter>
-                <Button color='success' onClick={onSave}>Создать</Button>
+                <Button color='success' disabled={header.length === 0 || body.length === 0} onClick={onSave}>Создать</Button>
             </CreateArticleFooter>
         </CreateContainer>
     );
