@@ -104,7 +104,7 @@ const ruLinks: NavigationLink[] = [
 	{ name: 'НТУ "ХПИ"', route: '/' },
 	{ name: 'Студенту', route: '/student', routes: [
 			{
-				name: 'Дисциплины свободного вибора',
+				name: 'Дисциплины свободного выбора',
 				route: '/disciplines'
 			},
 			{
@@ -178,7 +178,13 @@ const ruLinks: NavigationLink[] = [
 
 const engLinks: NavigationLink[] = [
 	{ name: 'NTU "KhPI"', route: '/' },
-	{ name: 'For Students', route: '/student' },
+	{ name: 'For Students', route: '/student', routes: [
+			{
+				name: 'Disciplines of free choice',
+				route: '/disciplines'
+			}
+		]
+	},
 	{ name: 'For Applicants', route: '/applicants', routes: [
 			{
 				name: MASTERS_HEADER[ENG],
